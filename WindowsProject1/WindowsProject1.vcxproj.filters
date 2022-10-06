@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Direct3D">
+      <UniqueIdentifier>{fcd12621-37e2-4517-9936-734623b013bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D\Vertex">
+      <UniqueIdentifier>{f9b9fc0a-f907-4e3d-9521-088665bbf8aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D\Triangle">
+      <UniqueIdentifier>{60db1c16-64fa-4e7d-8d5e-21300b80ef4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -27,9 +36,45 @@
     <ClInclude Include="WindowsProject1.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Direct3D.h">
+      <Filter>Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Direct3D_Triangle.h">
+      <Filter>Direct3D\Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="Direct3D_Vertex.h">
+      <Filter>Direct3D\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsProject1.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D_Triangle.cpp">
+      <Filter>Direct3D\Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D_Vertex.cpp">
+      <Filter>Direct3D\Vertex</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,5 +90,11 @@
     <Image Include="WindowsProject1.ico">
       <Filter>リソース ファイル</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="vs.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
+    <FxCompile Include="ps.hlsl" />
   </ItemGroup>
 </Project>
