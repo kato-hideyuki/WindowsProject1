@@ -33,8 +33,8 @@ bool Direct3D::Init(HWND hWnd)
         DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f)     //  up
     );
     //m_triangle.Create(m_pDevice);
-    //m_quad.Create(m_pDevice);
-    m_cube.Create(m_pDevice);
+    m_quad.Create(m_pDevice);
+    //m_cube.Create(m_pDevice);
 
     return true;
 }
@@ -72,8 +72,8 @@ void Direct3D::Draw()
     m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, m_clearColor);
 
     //m_triangle.Draw(m_pDeviceContext);
-    //m_quad.Draw(m_pDeviceContext);
-    m_cube.Draw(m_pDeviceContext, m_pDepthStencilView, m_pRenderTargetView);
+    m_quad.Draw(m_pDeviceContext);
+    //m_cube.Draw(m_pDeviceContext, m_pDepthStencilView, m_pRenderTargetView);
 }
 
 //--------------------------------------------- 

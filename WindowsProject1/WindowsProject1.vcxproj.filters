@@ -143,11 +143,5 @@
     <FxCompile Include="shader\vsCube.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
-    <FxCompile Include="shader\psTexture.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="shader\vsTexture.hlsl">
-      <Filter>Shader</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>

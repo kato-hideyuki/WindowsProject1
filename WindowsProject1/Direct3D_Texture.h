@@ -11,28 +11,9 @@ public:
 	//---------------------------------------------------------------------------
 	// public methods.
 	//---------------------------------------------------------------------------
-	Texture();
-	~Texture();
 
-	void Create(
-		ID3D11Device* device,
-		ID3D11DeviceContext* context
-	);
-	void Draw(
-		ID3D11DeviceContext* context, 
-		ID3D11Buffer* vertexBuffer
-	);
-private:
-	//---------------------------------------------------------------------------
-	// private methods.
-	//---------------------------------------------------------------------------
-	bool CreateTexture(
-		ID3D11Device* device,
-		ID3D11DeviceContext* context
-	);
-	bool CreateSamplerState(ID3D11Device* device);
-	bool CreateRasterizer(
-		ID3D11Device* device,
-		ID3D11DeviceContext* context
-	);
 };
+
+
+
+
