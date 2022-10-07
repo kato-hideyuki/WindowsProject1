@@ -67,6 +67,6 @@ private:
 	float m_clearColor[4] = { 0,1,1,0 };	//	クリアカラー
 
 	//Triangle m_triangle;	//	三角ポリゴン
-	Quad	 m_quad;		//	四角ポリゴン
-	//Cube	 m_cube;		//	キューブ
+	//Quad	 m_quad;		//	四角ポリゴン
+	Cube	 m_cube;		//	キューブ
 };
