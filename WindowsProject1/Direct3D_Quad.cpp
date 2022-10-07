@@ -12,10 +12,10 @@
 //--------------------------------------------- 
 Quad::Quad()
 {
-	m_vertices[0] = {-0.25f, 0.5f, 0.5f,		1.0f, 0.0f, 0.0f, 1.0f };
-	m_vertices[1] = { 0.25f,-0.5f, 0.5f,		0.0f, 1.0f, 0.0f, 1.0f };
-	m_vertices[2] = {-0.25f,-0.5f, 0.5f,		0.0f, 0.0f, 1.0f, 1.0f };
-	m_vertices[3] = { 0.25f, 0.5f, 0.5f,		1.0f, 1.0f, 0.0f, 1.0f };
+	m_vertices[0] = {-0.25f, 0.5f, 0.5f,	1.0f, 0.0f, 0.0f, 1.0f,		0.0f,0.0f};
+	m_vertices[1] = { 0.25f,-0.5f, 0.5f,	0.0f, 1.0f, 0.0f, 1.0f,		1.0f,0.0f};
+	m_vertices[2] = {-0.25f,-0.5f, 0.5f,	0.0f, 0.0f, 1.0f, 1.0f,		0.0f,1.0f};
+	m_vertices[3] = { 0.25f, 0.5f, 0.5f,	1.0f, 1.0f, 0.0f, 1.0f,		1.0f,1.0f};
 }
 
 //--------------------------------------------- 
@@ -65,6 +65,7 @@ void Quad::Draw(ID3D11DeviceContext* context)
 	);
 
 	context->DrawIndexed(ARRAYSIZE(m_indexList), 0, 0);
+
 }
 
 //--------------------------------------------- 
@@ -105,8 +106,8 @@ bool Quad::CreateVertexBuffer(ID3D11Device* device)
 		return false;
 	}
 	m_shader.CreateShaderAndLayout(
-		L"shader/vs.hlsl",
-		L"shader/ps.hlsl",
+		L"shader/vsTexture.hlsl",
+		L"shader/psTexture.hlsl",
 		device
 	);
 

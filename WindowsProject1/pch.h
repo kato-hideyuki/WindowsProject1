@@ -7,7 +7,11 @@
 
 #include <d3d11.h>
 #include <directxmath.h>
+#include <wincodec.h>
+#include <wrl/client.h>
+#include <random>
 #pragma comment(lib, "d3d11.lib")
+#pragma comment(lib,"windowscodecs.lib")
 
 #include "Direct3D.h"
 #include "Direct3D_Vertex.h"
