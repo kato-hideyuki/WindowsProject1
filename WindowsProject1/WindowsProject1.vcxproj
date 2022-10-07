@@ -146,7 +146,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Direct3D.h" />
+    <ClInclude Include="Direct3D_Cube.h" />
+    <ClInclude Include="Direct3D_Quad.h" />
+    <ClInclude Include="Direct3D_Texture.h" />
     <ClInclude Include="Direct3D_Triangle.h" />
     <ClInclude Include="Direct3D_Vertex.h" />
     <ClInclude Include="framework.h" />
@@ -158,7 +162,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Direct3D.cpp" />
+    <ClCompile Include="Direct3D_Cube.cpp" />
+    <ClCompile Include="Direct3D_Quad.cpp" />
+    <ClCompile Include="Direct3D_Texture.cpp" />
     <ClCompile Include="Direct3D_Triangle.cpp" />
     <ClCompile Include="Direct3D_Vertex.cpp" />
     <ClCompile Include="pch.cpp">
@@ -176,17 +184,17 @@
     <Image Include="WindowsProject1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="ps.hlsl">
+    <FxCompile Include="shader\ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="vs.hlsl">
+    <FxCompile Include="shader\psCube.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="shader\vs.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="shader\vsCube.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

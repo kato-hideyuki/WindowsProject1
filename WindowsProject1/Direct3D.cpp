@@ -1,9 +1,8 @@
 //==============================================================================
 // Filename: Direct3D.cpp
-// Description: Direct3D SetUp 
+// Description: DirectX11初期化、描画処理
 // Copyright (C) Silicon Studio Co., Ltd. All rights reserved.
 //==============================================================================
-
 #include "Direct3D.h"
 
 //--------------------------------------------- 
@@ -21,8 +20,22 @@ bool Direct3D::Init(HWND hWnd)
     m_screenHeight = (UINT)(rect.bottom - rect.top);
 
     InitDeviceAndSwapChein(hWnd);
-
     InitBuckBuffer();
+    InitDepthStencilBuffer();
+
+    Camera::GetInstance()->Init(
+        0.1f,   //  nearClip
+        100.0f, //  farClip
+        m_screenWidth / m_screenHeight,     //  aspect
+        DirectX::XMConvertToRadians(45.0f), //  fov
+        DirectX::XMFLOAT3(2.0f, 2.0f, -2.0f),   //  eye
+        DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f),    //  lookat
+        DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f)     //  up
+    );
+    //m_triangle.Create(m_pDevice);
+    m_quad.Create(m_pDevice);
+    //m_cube.Create(m_pDevice);
+
     return true;
 }
 
@@ -38,6 +51,7 @@ void Direct3D::Swap()
     hr = m_pSwapChain->Present(0, 0);
     if (FAILED(hr)) 
     {
+        MessageBox(nullptr, L"swap backbuffer", L"Error", MB_OK);
         return;
     }
 }
@@ -54,8 +68,12 @@ void Direct3D::Draw()
         //  中身ナシ（初期化がうまくいっていない）
         return;
     }
-
+    m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, nullptr);
     m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, m_clearColor);
+
+    //m_triangle.Draw(m_pDeviceContext);
+    m_quad.Draw(m_pDeviceContext);
+    //m_cube.Draw(m_pDeviceContext, m_pDepthStencilView, m_pRenderTargetView);
 }
 
 //--------------------------------------------- 
@@ -150,6 +168,7 @@ bool Direct3D::InitDeviceAndSwapChein(HWND hWnd)
     }
     if (FAILED(hr))
     {
+        MessageBox(nullptr, L"CreateDeviceAndSwapChain", L"Error", MB_OK);
         return false;
     }
 
@@ -158,7 +177,6 @@ bool Direct3D::InitDeviceAndSwapChein(HWND hWnd)
 
 //--------------------------------------------- 
 /// バックバッファの初期化
-/// \param[in] hWnd	ウィンドウズハンドル
 ///	
 /// \return True On Success
 //--------------------------------------------- 
@@ -174,6 +192,7 @@ bool Direct3D::InitBuckBuffer()
     );
     if (FAILED(hr))
     {
+        MessageBox(nullptr, L"InitBackBuffer SwapChain", L"Error", MB_OK);
         return false;
     }
 
@@ -188,6 +207,7 @@ bool Direct3D::InitBuckBuffer()
     pBackBuffer->Release();     //  以降使わないので解放
     if (FAILED(hr))
     {
+        MessageBox(nullptr, L"CreaterenderTargetView", L"Error", MB_OK);
         return false;
     }
 
@@ -198,6 +218,48 @@ bool Direct3D::InitBuckBuffer()
     m_viewport[0].MinDepth = 0.0f;  //  ビューポート最小深度値
     m_viewport[0].MaxDepth = 1.0f;  //  ビューポート最大深度値
     m_pDeviceContext->RSSetViewports(1, &m_viewport[0]);
+
+    return true;
+}
+
+//--------------------------------------------- 
+/// 深度ステンシルバッファの初期化
+///	
+/// \return True On Success
+//--------------------------------------------- 
+bool Direct3D::InitDepthStencilBuffer()
+{
+    D3D11_TEXTURE2D_DESC txDesc;
+    ZeroMemory(&txDesc, sizeof(txDesc));
+    txDesc.Width = m_screenWidth;
+    txDesc.Height = m_screenHeight;
+    txDesc.MipLevels = 1;
+    txDesc.ArraySize = 1;
+    txDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+    txDesc.SampleDesc.Count = 1;
+    txDesc.SampleDesc.Quality = 0;
+    txDesc.Usage = D3D11_USAGE_DEFAULT;
+    txDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+    txDesc.CPUAccessFlags = 0;
+    txDesc.MiscFlags = 0;
+    HRESULT hr = m_pDevice->CreateTexture2D(&txDesc, NULL, &m_pDepthStencilTexture);
+    if (FAILED(hr))
+    {
+        MessageBox(nullptr, L"CreateTexture2D", L"Error", MB_OK);
+        return false;
+    }
+
+    D3D11_DEPTH_STENCIL_VIEW_DESC dsDesc;
+    ZeroMemory(&dsDesc, sizeof(dsDesc));
+    dsDesc.Format = txDesc.Format;
+    dsDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+    dsDesc.Texture2D.MipSlice = 0;
+    hr = m_pDevice->CreateDepthStencilView(m_pDepthStencilTexture, &dsDesc, &m_pDepthStencilView);
+    if (FAILED(hr))
+    {
+        MessageBox(nullptr, L"CreateDepthStencilView", L"Error", MB_OK);
+        return false;
+    }
 
     return true;
 }

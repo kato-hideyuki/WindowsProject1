@@ -22,6 +22,21 @@
     <Filter Include="Direct3D\Triangle">
       <UniqueIdentifier>{60db1c16-64fa-4e7d-8d5e-21300b80ef4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Direct3D\Quad">
+      <UniqueIdentifier>{d805f779-e1ad-437b-9c3a-2c8edf40e3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{8764d235-31fa-498c-8213-09b695c95d0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D\Cube">
+      <UniqueIdentifier>{c171178e-ad7a-4ee3-b0c7-691001183b52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{98b5b70c-be77-4011-b6e8-f1d577cc357e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D\Texture">
+      <UniqueIdentifier>{b5e77bcd-f2dc-4c0f-85c6-c98139475b96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -51,8 +66,20 @@
     <ClInclude Include="Direct3D_Vertex.h">
       <Filter>Direct3D\Vertex</Filter>
     </ClInclude>
+    <ClInclude Include="Direct3D_Quad.h">
+      <Filter>Direct3D\Quad</Filter>
+    </ClInclude>
+    <ClInclude Include="Direct3D_Cube.h">
+      <Filter>Direct3D\Cube</Filter>
+    </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Direct3D_Texture.h">
+      <Filter>Direct3D\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +101,20 @@
     <ClCompile Include="Direct3D_Vertex.cpp">
       <Filter>Direct3D\Vertex</Filter>
     </ClCompile>
+    <ClCompile Include="Direct3D_Quad.cpp">
+      <Filter>Direct3D\Quad</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D_Cube.cpp">
+      <Filter>Direct3D\Cube</Filter>
+    </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D_Texture.cpp">
+      <Filter>Direct3D\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,9 +131,17 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="vs.hlsl">
-      <Filter>リソース ファイル</Filter>
+    <FxCompile Include="shader\ps.hlsl">
+      <Filter>Shader</Filter>
     </FxCompile>
-    <FxCompile Include="ps.hlsl" />
+    <FxCompile Include="shader\vs.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="shader\psCube.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="shader\vsCube.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

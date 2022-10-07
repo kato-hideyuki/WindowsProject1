@@ -1,7 +1,7 @@
 #pragma once
 //==============================================================================
 // Filename: Application.h
-// Description: DirectX11初期化、描画処理
+// Description: DirectX11初期化、描画処理、全体の処理
 // Copyright (C) Silicon Studio Co., Ltd. All rights reserved.
 //=============================================================================
 #include "Direct3D.h"

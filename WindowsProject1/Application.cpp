@@ -1,3 +1,8 @@
+//==============================================================================
+// Filename: Application.cpp
+// Description: DirectX11‰Šú‰»A•`‰æˆ—A‘S‘Ì‚Ìˆ—
+// Copyright (C) Silicon Studio Co., Ltd. All rights reserved.
+//=============================================================================
 #include "Application.h"
 #include "Resource.h"
 
